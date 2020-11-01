@@ -34,6 +34,22 @@ public class PlayerInventory : MonoBehaviour
     public CharacterMoter characterMoter;
     public Animation playerAnimations;
 
+    // Invincibilité
+    public float invincibleTime = 10.0f;
+ 	bool isInvincible = false;
+
+ 	public void SetInvincible()
+ 	{
+ 		isInvincible = true;
+ 		CancelInvoke( "SetDamageable" ); // in case the method has already been invoked
+ 		Invoke( "SetDamageable", invincibleTime );
+ 	}
+
+ 	void SetDamageable()
+ 	{
+     isInvincible = false;
+ 	}
+
     public void OnEnable()
     {
         Inventory.ItemEquip += OnBackpack;
@@ -182,7 +198,7 @@ public class PlayerInventory : MonoBehaviour
     public void ApplyDamage(float TheDamage)
     {
         // évite de faire rejouer l'animation du mort du personnage à chaque fois qu'il prend des dégats alors qu'il est déjà mort
-        if(!characterMoter.isDead)
+        if(!characterMoter.isDead && !isInvincible)
         {
             // équation de vie restante
             currentHealth = currentHealth - (TheDamage - ((currentArmor * TheDamage) / 100));
@@ -190,6 +206,16 @@ public class PlayerInventory : MonoBehaviour
             {
                 Dead();
             }
+        }
+    }
+
+    public void ApplyHeal(float TheHP)
+    {
+        // évite de faire rejouer l'animation du mort du personnage à chaque fois qu'il prend des dégats alors qu'il est déjà mort
+        if(!characterMoter.isDead && currentHealth < maxHealth)
+        {
+            // équation de vie restante
+            currentHealth = currentHealth + TheHP;
         }
     }
 

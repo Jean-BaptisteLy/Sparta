@@ -112,6 +112,7 @@ public class EnemyAI : MonoBehaviour
     {
         isDead = true;
         //animations.Play("die");
-        Destroy(transform.gameObject, 5);
+        //Destroy(transform.gameObject, 5);
+        Destroy(transform.gameObject);
     }
 }
