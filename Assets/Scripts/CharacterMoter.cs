@@ -188,8 +188,13 @@ public class CharacterMoter : MonoBehaviour
                 //if(hit.transform.name + " detected")
                 if(hit.transform.tag == "Enemy")
                 {
-                    Debug.Log("je suis ici");
                     hit.transform.GetComponent<EnemyAI>().ApplyDamage(playerInv.currentDamage);
+                    //print(hit.transform.name + " detected");
+                }
+
+                if(hit.transform.tag == "EnemyCrab")
+                {
+                    hit.transform.GetComponent<Rikayon>().ApplyDamage(playerInv.currentDamage);
                     //print(hit.transform.name + " detected");
                 }
                 

@@ -6,17 +6,124 @@ public class Rikayon : MonoBehaviour {
 
     public Animator animator;
 
+    // Distance entre le joueur et l'ennemi
+	private float Distance;
+
+	// Cible de l'ennemi
+	public Transform Target;
+
+	// Distance de poursuite
+	public float chaseRange = 10;
+
+	// Portée des attaques
+	public float attackRange = 4.0f;
+
+	// Cooldown des attaques
+	public float attackRepeatTime = 1;
+	private float attackTime;
+
+	// Montant des dégats infligés
+	public float TheDamage;
+
+	// Agent de navigation
+	private UnityEngine.AI.NavMeshAgent agent;
+
+	// animator de l'ennemi
+	//private Animation animator;
+	//private Animator animator;
+
+	// Vie de l'ennemi
+	public float enemyHealth;
+	private bool isDead = false;
+
 	// Use this for initialization
 	void Start () {
-		
+		agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
+		attackTime = Time.time;
 	}
 	
+	/*
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            animator.SetTrigger("Attack_1");
-        }
+        //if (Input.GetKeyDown(KeyCode.Space)) {
+            animator.SetTrigger("Walk_Cycle_1");
+        //}
 
 	}
+	*/
+
+	// Update is called once per frame
+    void Update()
+    {
+        //agent.destination = Target.position;
+
+        if(!isDead)
+        {
+        	// On cherche le joueur en permanence
+        	Target = GameObject.Find("Player").transform;
+
+        	// On calcule la distance entre le joueur et l'ennemi
+        	// en fonction de cette distance on effectue diverses actions
+        	Distance = Vector3.Distance(Target.position, transform.position);
+
+        	// Quand l'ennemi est loin = idle
+        	if(Distance > chaseRange) idle();
+
+        	// Quand l'ennemi est proche mais pas assez pour attaquer
+        	if(Distance < chaseRange && Distance > attackRange) chase();
+
+        	// Quand l'ennemi est assez proche pour attaquer
+        	if(Distance < attackRange) attack();
+        }
+    }
+
+    void chase()
+    {
+    	animator.SetTrigger("Walk_Cycle_1");
+    	agent.destination = Target.position;
+    }
+
+
+    void attack()
+    {
+        // Empêche l'ennemi de traverser le joueur
+        agent.destination = transform.position;
+ 		/*
+        // Si pas de cooldown
+        if (Time.time > attackTime) {
+            animator.SetTrigger("Attack_1");
+            Target.GetComponent<PlayerInventory>().ApplyDamage(TheDamage);
+            Debug.Log("L'ennemi a envoyé " + TheDamage + " points de dégâts");
+            attackTime = Time.time + attackRepeatTime;
+        }
+        */
+    }
+
+    void idle()
+    {
+        animator.SetTrigger("Rest_1");
+    }
+
+    public void ApplyDamage(float TheDamage)
+    {
+        if (!isDead)
+        {
+            enemyHealth = enemyHealth - TheDamage;
+            print(gameObject.name + "a subi " + TheDamage + " points de dégâts.");
+ 
+            if(enemyHealth <= 0)
+            {
+                Dead();
+            }
+        }
+    }
+
+    public void Dead()
+    {
+        isDead = true;
+        animator.SetTrigger("Die");
+        //Destroy(transform.gameObject, 1);
+        Destroy(transform.gameObject);
+    }
 }

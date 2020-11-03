@@ -19,6 +19,7 @@ TagManager:
   - Item
   - ItemIcon
   - Enemy
+  - EnemyCrab
   layers:
   - Default
   - TransparentFX

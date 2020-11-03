@@ -27,8 +27,9 @@ public class EnemyAI : MonoBehaviour
 	// Agent de navigation
 	private UnityEngine.AI.NavMeshAgent agent;
 
-	// Animations de l'ennemi
-	private Animation animations;
+	// animator de l'ennemi
+	//private Animation animator;
+	private Animator animator;
 
 	// Vie de l'ennemi
 	public float enemyHealth;
@@ -38,7 +39,8 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
-        animations = gameObject.GetComponent<Animation>();
+        //animator = gameObject.GetComponent<Animation>();
+        animator = gameObject.GetComponent<Animator>();
         attackTime = Time.time;
     }
 
@@ -69,7 +71,7 @@ public class EnemyAI : MonoBehaviour
     
     void chase()
     {
-    	//animations.Play("walk");
+    	animator.SetTrigger("Walk");
     	agent.destination = Target.position;
     }
 
@@ -81,7 +83,7 @@ public class EnemyAI : MonoBehaviour
  
         // Si pas de cooldown
         if (Time.time > attackTime) {
-            //animations.Play("hit");
+            //animator.SetTrigger("Attack01");
             Target.GetComponent<PlayerInventory>().ApplyDamage(TheDamage);
             Debug.Log("L'ennemi a envoyé " + TheDamage + " points de dégâts");
             attackTime = Time.time + attackRepeatTime;
@@ -90,12 +92,11 @@ public class EnemyAI : MonoBehaviour
 
     void idle()
     {
-        //animations.Play("idle");
+        //animator.SetTrigger("Idle");
     }
 
     public void ApplyDamage(float TheDamage)
     {
-    	Debug.Log("toto");
         if (!isDead)
         {
             enemyHealth = enemyHealth - TheDamage;
@@ -111,8 +112,8 @@ public class EnemyAI : MonoBehaviour
     public void Dead()
     {
         isDead = true;
-        //animations.Play("die");
-        //Destroy(transform.gameObject, 5);
-        Destroy(transform.gameObject);
+        //animator.SetTrigger("Die");
+        Destroy(transform.gameObject, 5);
+        //Destroy(transform.gameObject);
     }
 }

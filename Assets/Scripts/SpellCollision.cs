@@ -19,6 +19,11 @@ public class SpellCollision : MonoBehaviour
     		col.gameObject.GetComponent<EnemyAI>().ApplyDamage(spellDamage);
     	}
 
+    	if(col.gameObject.tag == "EnemyCrab")
+    	{
+    		col.gameObject.GetComponent<Rikayon>().ApplyDamage(spellDamage);
+    	}
+
     	if(col.gameObject.tag != "Player")
     	{
     		Destroy(gameObject);
