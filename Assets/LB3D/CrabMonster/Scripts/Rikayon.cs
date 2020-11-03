@@ -36,6 +36,11 @@ public class Rikayon : MonoBehaviour {
 	public float enemyHealth;
 	private bool isDead = false;
 
+	// Niveau 2
+	public bool inofensif;
+	private float timeToChangeDirection = 2.0f;
+	private float timeInit = 2.0f;
+
 	// Use this for initialization
 	void Start () {
 		agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -58,7 +63,7 @@ public class Rikayon : MonoBehaviour {
     {
         //agent.destination = Target.position;
 
-        if(!isDead)
+        if(!isDead && !inofensif)
         {
         	// On cherche le joueur en permanence
         	Target = GameObject.Find("Player").transform;
@@ -76,11 +81,34 @@ public class Rikayon : MonoBehaviour {
         	// Quand l'ennemi est assez proche pour attaquer
         	if(Distance < attackRange) attack();
         }
+        else if (!isDead && inofensif)
+        {
+        	//timeToChangeDirection -= Time.deltaTime;
+        	animator.SetTrigger("Walk_Cycle_1");
+        	/*
+        	Random aleatoire = new Random();
+			int entier = aleatoire.next(); //Génère un entier aléatoire positif
+			int entierUnChiffre = aleatoire.next(10); //Génère un entier compris entre 0 et 9
+			int mois = aleatoire.Next(1, 13); // Génère un entier compris entre 1 et 12
+        	*/
+
+        	if (timeInit < timeToChangeDirection)
+        	{
+        		timeInit += Time.deltaTime;
+        	}
+        	else
+        	{
+        		//Random aleatoire = new Random();
+        		timeInit = 0.0f;
+        		float x = Random.Range(5.0f, 16.0f);
+        		agent.destination = new Vector3(x, 2.384186e-07f, 10f);
+        	}
+        }
     }
 
     void chase()
     {
-    	animator.SetTrigger("Walk_Cycle_1");
+    	animator.SetTrigger("Walk_Cycle_2");
     	agent.destination = Target.position;
     }
 
@@ -89,7 +117,7 @@ public class Rikayon : MonoBehaviour {
     {
         // Empêche l'ennemi de traverser le joueur
         agent.destination = transform.position;
- 		/*
+ 		
         // Si pas de cooldown
         if (Time.time > attackTime) {
             animator.SetTrigger("Attack_1");
@@ -97,7 +125,7 @@ public class Rikayon : MonoBehaviour {
             Debug.Log("L'ennemi a envoyé " + TheDamage + " points de dégâts");
             attackTime = Time.time + attackRepeatTime;
         }
-        */
+        
     }
 
     void idle()
@@ -126,4 +154,5 @@ public class Rikayon : MonoBehaviour {
         //Destroy(transform.gameObject, 1);
         Destroy(transform.gameObject);
     }
+
 }
