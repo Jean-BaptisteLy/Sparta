@@ -20,6 +20,8 @@ TagManager:
   - ItemIcon
   - Enemy
   - EnemyCrab
+  - TagLight
+  - Pique
   layers:
   - Default
   - TransparentFX
