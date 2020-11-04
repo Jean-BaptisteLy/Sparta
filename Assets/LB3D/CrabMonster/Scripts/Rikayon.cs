@@ -45,13 +45,14 @@ public class Rikayon : MonoBehaviour {
 
     // Niveau 5
     public bool boss;
-    Image hpImage;
+    public Image hpImage;
 
 	// Use this for initialization
 	void Start () {
 		agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
 		attackTime = Time.time;
-        hpImage = GameObject.Find("currentHP").GetComponent<Image>();
+        //hpImage = GameObject.Find("currentHP").GetComponent<Image>();
+        //hpImage.fillAmount = 0.5f;
 	}
 	
 	/*
@@ -149,6 +150,7 @@ public class Rikayon : MonoBehaviour {
             if(boss) {
                 float percentageHP = ((enemyHealth * 100) / maxHealth) / 100;
                 hpImage.fillAmount = percentageHP;
+                Debug.Log(percentageHP);
             }            
             if(enemyHealth <= 0)
             {
