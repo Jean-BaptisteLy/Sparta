@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Rikayon : MonoBehaviour {
 
@@ -35,16 +36,22 @@ public class Rikayon : MonoBehaviour {
 	// Vie de l'ennemi
 	public float enemyHealth;
 	private bool isDead = false;
+    public float maxHealth;
 
 	// Niveau 2
 	public bool inofensif;
 	private float timeToChangeDirection = 2.0f;
 	private float timeInit = 2.0f;
 
+    // Niveau 5
+    public bool boss;
+    Image hpImage;
+
 	// Use this for initialization
 	void Start () {
 		agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
 		attackTime = Time.time;
+        hpImage = GameObject.Find("currentHP").GetComponent<Image>();
 	}
 	
 	/*
@@ -139,7 +146,10 @@ public class Rikayon : MonoBehaviour {
         {
             enemyHealth = enemyHealth - TheDamage;
             print(gameObject.name + "a subi " + TheDamage + " points de dégâts.");
- 
+            if(boss) {
+                float percentageHP = ((enemyHealth * 100) / maxHealth) / 100;
+                hpImage.fillAmount = percentageHP;
+            }            
             if(enemyHealth <= 0)
             {
                 Dead();
