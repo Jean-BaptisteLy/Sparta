@@ -39,13 +39,14 @@ public class Rikayon : MonoBehaviour {
     public float maxHealth;
 
 	// Niveau 2
-	public bool inofensif;
+	public bool inoffensif;
 	private float timeToChangeDirection = 2.0f;
 	private float timeInit = 2.0f;
 
     // Niveau 5
     public bool boss;
     public Image hpImage;
+    public bool actif;
 
 	// Use this for initialization
 	void Start () {
@@ -71,7 +72,7 @@ public class Rikayon : MonoBehaviour {
     {
         //agent.destination = Target.position;
 
-        if(!isDead && !inofensif)
+        if(!isDead && !inoffensif && actif)
         {
         	// On cherche le joueur en permanence
         	Target = GameObject.Find("Player").transform;
@@ -89,7 +90,7 @@ public class Rikayon : MonoBehaviour {
         	// Quand l'ennemi est assez proche pour attaquer
         	if(Distance < attackRange) attack();
         }
-        else if (!isDead && inofensif)
+        else if (!isDead && inoffensif)
         {
         	//timeToChangeDirection -= Time.deltaTime;
         	animator.SetTrigger("Walk_Cycle_1");
@@ -150,7 +151,7 @@ public class Rikayon : MonoBehaviour {
             if(boss) {
                 float percentageHP = ((enemyHealth * 100) / maxHealth) / 100;
                 hpImage.fillAmount = percentageHP;
-                Debug.Log(percentageHP);
+                //Debug.Log(percentageHP);
             }            
             if(enemyHealth <= 0)
             {
@@ -167,4 +168,8 @@ public class Rikayon : MonoBehaviour {
         Destroy(transform.gameObject);
     }
 
+    public void activate()
+    {
+        actif = true;
+    }
 }
