@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class Rikayon : MonoBehaviour {
 
@@ -113,6 +115,11 @@ public class Rikayon : MonoBehaviour {
         		agent.destination = new Vector3(x, 2.384186e-07f, 10f);
         	}
         }
+        else if (isDead && boss)
+        {
+            agent.destination = transform.position;
+            animator.SetTrigger("Die");
+        } 
     }
 
     void chase()
@@ -154,7 +161,7 @@ public class Rikayon : MonoBehaviour {
                 //Debug.Log(percentageHP);
             }            
             if(enemyHealth <= 0)
-            {
+            {   
                 Dead();
             }
         }
@@ -165,11 +172,30 @@ public class Rikayon : MonoBehaviour {
         isDead = true;
         animator.SetTrigger("Die");
         //Destroy(transform.gameObject, 1);
-        Destroy(transform.gameObject);
+        if(!boss)
+            Destroy(transform.gameObject);
     }
 
     public void activate()
     {
         actif = true;
+    }
+
+    void OnGUI () 
+    {
+        if(isDead && boss)
+        {
+            GUI.Label(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 80, 80, 40), "Félicitations !");
+
+            if(GUI.Button(new Rect(Screen.width / 2 - 40, Screen.height / 2 + 40, 80, 40), "Menu"))
+            {
+                SceneManager.LoadScene("MainMenu"); // Charge le menu principal
+            }
+            if(GUI.Button(new Rect(Screen.width / 2 - 40, Screen.height / 2 + 100, 80, 40), "Quitter"))
+            {
+                Application.Quit(); // Ferme le jeu
+            }
+            //Destroy(transform.gameObject);
+        }
     }
 }

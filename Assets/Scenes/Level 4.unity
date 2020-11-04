@@ -36258,6 +36258,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4199921752764098979, guid: eaa7ab659fa76884181fa3bc986d8f43, type: 3}
+      propertyPath: sceneToLoad
+      value: 
+      objectReference: {fileID: 102900000, guid: 1612220bb1c7908409e2e081d58cc66e, type: 3}
     - target: {fileID: 5289745504500969645, guid: eaa7ab659fa76884181fa3bc986d8f43, type: 3}
       propertyPath: m_Name
       value: Player
@@ -36325,6 +36329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9dd60f27abd1a409dc18f82119dbcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneToLoad: {fileID: 102900000, guid: 1612220bb1c7908409e2e081d58cc66e, type: 3}
 --- !u!1001 &1604733178
 PrefabInstance:
   m_ObjectHideFlags: 0

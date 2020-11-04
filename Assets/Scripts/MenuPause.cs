@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-//using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class MenuPause : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class MenuPause : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GUI.Button(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 20, 80, 40), "Continuer");
+
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class MenuPause : MonoBehaviour
 	{
 	    if(isPaused)
 	    {
-	    	GUI.Label(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 80, 80, 40), "Hello World!");
+	    	//GUI.Label(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 80, 80, 40), "Hello World!");
 	        // Si on clique sur le bouton alors isPaused devient faux donc le jeu reprend
 	        if(GUI.Button(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 20, 80, 40), "Continuer"))
 	        {
@@ -41,8 +41,8 @@ public class MenuPause : MonoBehaviour
 	        // Dans le cas du bouton Quitter, il faut augmenter sa position Y pour qu'il soit plus bas.
 	        if(GUI.Button(new Rect(Screen.width / 2 - 40, Screen.height / 2 + 40, 80, 40), "Menu"))
 	        {
-	            Application.LoadLevel(sceneToLoad.name); // Charge le menu principal
-	        	//SceneManager.LoadScene(sceneToLoad.name);
+	            //Application.LoadLevel(sceneToLoad.name); // Charge le menu principal
+	        	SceneManager.LoadScene("MainMenu"); // Charge le menu principal
 	        }
 	        if(GUI.Button(new Rect(Screen.width / 2 - 40, Screen.height / 2 + 100, 80, 40), "Quitter"))
 	        {

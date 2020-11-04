@@ -11,7 +11,7 @@ public class CraftResultSlot : MonoBehaviour
     GameObject itemGameObject;
     //Inventory inventory;
 
-
+    /*
     // Use this for initialization
     void Start()
     {
@@ -41,5 +41,5 @@ public class CraftResultSlot : MonoBehaviour
 
     }
 
-
+    */
 }

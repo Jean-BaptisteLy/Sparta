@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -37,6 +39,8 @@ public class PlayerInventory : MonoBehaviour
     // Invincibilité
     public float invincibleTime = 10.0f;
  	bool isInvincible = false;
+
+    //public Object sceneToLoad;
 
  	public void SetInvincible()
  	{
@@ -352,4 +356,29 @@ public class PlayerInventory : MonoBehaviour
 
     }
 
+    void OnGUI () 
+    {
+        if(characterMoter.isDead)
+        {
+            GUI.Label(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 80, 80, 40), "VOUS ÊTES MORT");
+            // Si on clique sur le bouton alors isPaused devient faux donc le jeu reprend
+            if(GUI.Button(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 20, 80, 40), "Rejouer"))
+            {
+                characterMoter.isDead = false;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                //Application.LoadLevel(SceneManager.GetActiveScene().name);
+            }
+            // Si on clique sur le bouton alors on ferme completment le jeu ou on charge la scene Menu Principal
+            // Dans le cas du bouton Quitter, il faut augmenter sa position Y pour qu'il soit plus bas.
+            if(GUI.Button(new Rect(Screen.width / 2 - 40, Screen.height / 2 + 40, 80, 40), "Menu"))
+            {
+                //Application.LoadLevel(sceneToLoad.name); // Charge le menu principal
+                SceneManager.LoadScene("MainMenu");
+            }
+            if(GUI.Button(new Rect(Screen.width / 2 - 40, Screen.height / 2 + 100, 80, 40), "Quitter"))
+            {
+                Application.Quit(); // Ferme le jeu
+            }
+        }
+    }
 }
