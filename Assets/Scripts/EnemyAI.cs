@@ -71,7 +71,7 @@ public class EnemyAI : MonoBehaviour
     
     void chase()
     {
-    	animator.SetTrigger("Walk");
+    	//animator.SetTrigger("Walk");
     	agent.destination = Target.position;
     }
 

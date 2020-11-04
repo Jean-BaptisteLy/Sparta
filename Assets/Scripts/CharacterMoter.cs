@@ -184,7 +184,7 @@ public class CharacterMoter : MonoBehaviour
             if(Physics.Raycast(rayHit.transform.position, transform.TransformDirection(Vector3.forward), out hit, attackRange))
             {
                 Debug.DrawLine(rayHit.transform.position, hit.point, Color.red);
-                
+                print(hit.transform.name + " detected");
                 //if(hit.transform.name + " detected")
                 if(hit.transform.tag == "Enemy")
                 {

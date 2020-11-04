@@ -303,4 +303,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hinge_of_door: {fileID: 8568780256830872586}
   door: {fileID: 8568780256836413236}
-  other: {fileID: 0}
+  other: {fileID: 9165856972240126654, guid: eaa7ab659fa76884181fa3bc986d8f43, type: 3}
