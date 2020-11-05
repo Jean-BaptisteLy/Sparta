@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-	public Object sceneToLoad;
-
+	public string sceneToLoad;
+	/*
+	public Object sceneToLoad;	
     void OnCollisionEnter(Collision col)
     {
     	if(col.gameObject.tag == "Player")
@@ -16,5 +17,12 @@ public class ChangeScene : MonoBehaviour
     		SceneManager.LoadScene(sceneToLoad.name);
     	}
     }
-
+	*/
+	public void OnTriggerEnter(Collider col)
+    {
+    	if(col.gameObject.tag == "Player")
+    	{
+    		SceneManager.LoadScene(sceneToLoad);
+    	}
+    }
 }
