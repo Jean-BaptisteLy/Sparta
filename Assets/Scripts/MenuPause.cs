@@ -31,7 +31,11 @@ public class MenuPause : MonoBehaviour
 	{
 	    if(isPaused)
 	    {
-	    	//GUI.Label(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 80, 80, 40), "Hello World!");
+	    	GUI.Label(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 120, 80, 40), "Déplacements: Z,Q,S,D");
+	    	GUI.Label(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 100, 80, 40), "Courir : MAJ enfoncé");
+	    	GUI.Label(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 80, 80, 40), "Saut : Espace");
+	    	GUI.Label(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 60, 80, 40), "Attaque 1: Clic gauche souris");
+	    	GUI.Label(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 40, 80, 40), "Attaque 2: W");
 	        // Si on clique sur le bouton alors isPaused devient faux donc le jeu reprend
 	        if(GUI.Button(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 20, 80, 40), "Continuer"))
 	        {
