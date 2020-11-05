@@ -2,6 +2,10 @@
 
 Projet fait sur Unity 2020.1.6f1
 
+## Jeu déjà build sur Windows :
+https://drive.google.com/drive/u/1/folders/14vazns_MvuaoM2LFVeoLaTYBnTE8bYwC?fbclid=IwAR200Mh2ouXwzdniH6dkgMbmFW-MeKNdir6anao5XF69HjD-HHU4atGQJeg
+
+
 ## Commandes :
 
 Déplacements : Z,Q,S,D
