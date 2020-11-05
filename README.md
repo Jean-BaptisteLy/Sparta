@@ -1,4 +1,4 @@
-# M2 ANDROIDE : Projet de l'UE "Environnements Virtuels Hautement Interactifs"
+## M2 ANDROIDE : Projet de l'UE "Environnements Virtuels Hautement Interactifs"
 
 Projet fait sur Unity 2020.1.6f1
 
