@@ -317,7 +317,12 @@ public class PlayerInventory : MonoBehaviour
         // Pour le changement de couleur
         if(skinTime <= 0)
         {
-            skin.gameObject.GetComponent<Renderer>().material.color = skinOriginalColor;      
+            if(!isInvincible)
+            {
+                skin.gameObject.GetComponent<Renderer>().material.color = skinOriginalColor;
+            }
+            else // invincible
+                skin.gameObject.GetComponent<Renderer>().material.color = Color.yellow;
         }
         else
         {
