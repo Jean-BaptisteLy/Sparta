@@ -12,7 +12,7 @@ public class HealthOrbCollision : MonoBehaviour
     }
 
     // Update is called once per frame
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
         if(col.gameObject.tag == "Player")
     	{
