@@ -36186,6 +36186,10 @@ PrefabInstance:
       propertyPath: sceneToLoad
       value: 
       objectReference: {fileID: 102900000, guid: 1612220bb1c7908409e2e081d58cc66e, type: 3}
+    - target: {fileID: 4199921752764098979, guid: eaa7ab659fa76884181fa3bc986d8f43, type: 3}
+      propertyPath: skin
+      value: 
+      objectReference: {fileID: 1604665551}
     - target: {fileID: 5289745504500969645, guid: eaa7ab659fa76884181fa3bc986d8f43, type: 3}
       propertyPath: m_Name
       value: Player
@@ -36254,6 +36258,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: {fileID: 102900000, guid: 1612220bb1c7908409e2e081d58cc66e, type: 3}
+--- !u!4 &1604665551 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1034167997004442793, guid: eaa7ab659fa76884181fa3bc986d8f43, type: 3}
+  m_PrefabInstance: {fileID: 1604665548}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1604733178
 PrefabInstance:
   m_ObjectHideFlags: 0

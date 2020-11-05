@@ -1439,6 +1439,7 @@ MonoBehaviour:
   characterMoter: {fileID: 0}
   playerAnimations: {fileID: 0}
   invincibleTime: 10
+  skin: {fileID: 1034167997004442793}
 --- !u!1 &5353168264997215768
 GameObject:
   m_ObjectHideFlags: 0

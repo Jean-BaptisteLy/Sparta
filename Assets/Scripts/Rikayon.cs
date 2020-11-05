@@ -50,12 +50,18 @@ public class Rikayon : MonoBehaviour {
     public Image hpImage;
     public bool actif;
 
+    // Changement de couleur de la peau
+    public Transform skin;
+    private float skinTime = 0.0f;
+    private Color skinOriginalColor;
+
 	// Use this for initialization
 	void Start () {
 		agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
 		attackTime = Time.time;
         //hpImage = GameObject.Find("currentHP").GetComponent<Image>();
         //hpImage.fillAmount = 0.5f;
+        skinOriginalColor = GetComponent<Renderer>().material.color;
 	}
 	
 	/*
@@ -72,6 +78,16 @@ public class Rikayon : MonoBehaviour {
 	// Update is called once per frame
     void Update()
     {
+        // Pour le changement de couleur
+        if(skinTime <= 0)
+        {
+            skin.gameObject.GetComponent<Renderer>().material.color = skinOriginalColor;      
+        }
+        else
+        {
+            skinTime -= Time.deltaTime;
+        }
+
         //agent.destination = Target.position;
 
         if(!isDead && !inoffensif && actif)
@@ -155,6 +171,8 @@ public class Rikayon : MonoBehaviour {
         {
             enemyHealth = enemyHealth - TheDamage;
             print(gameObject.name + "a subi " + TheDamage + " points de dégâts.");
+            skin.gameObject.GetComponent<Renderer>().material.color = Color.red;
+            skinTime = 0.5f;
             if(boss) {
                 float percentageHP = ((enemyHealth * 100) / maxHealth) / 100;
                 hpImage.fillAmount = percentageHP;

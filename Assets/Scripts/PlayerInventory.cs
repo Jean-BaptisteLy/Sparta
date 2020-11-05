@@ -42,8 +42,20 @@ public class PlayerInventory : MonoBehaviour
 
     //public Object sceneToLoad;
 
+    // Changement de couleur de la peau
+    public Transform skin;
+    private float skinTime = 0.0f;
+    private Color skinOriginalColor;
+
+    void start()
+    {
+        skinOriginalColor = GetComponent<Renderer>().material.color;
+    }
+
  	public void SetInvincible()
  	{
+        skin.gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+        skinTime = invincibleTime;
  		isInvincible = true;
  		CancelInvoke( "SetDamageable" ); // in case the method has already been invoked
  		Invoke( "SetDamageable", invincibleTime );
@@ -51,7 +63,7 @@ public class PlayerInventory : MonoBehaviour
 
  	void SetDamageable()
  	{
-     isInvincible = false;
+        isInvincible = false;
  	}
 
     public void OnEnable()
@@ -204,6 +216,8 @@ public class PlayerInventory : MonoBehaviour
         // évite de faire rejouer l'animation du mort du personnage à chaque fois qu'il prend des dégats alors qu'il est déjà mort
         if(!characterMoter.isDead && !isInvincible)
         {
+            skin.gameObject.GetComponent<Renderer>().material.color = Color.red;
+            skinTime = 0.5f;
             // équation de vie restante
             currentHealth = currentHealth - (TheDamage - ((currentArmor * TheDamage) / 100));
             if(currentHealth <= 0)
@@ -215,6 +229,8 @@ public class PlayerInventory : MonoBehaviour
 
     public void ApplyHeal(float TheHP)
     {
+        skin.gameObject.GetComponent<Renderer>().material.color = Color.green;
+        skinTime = 0.5f;
         // évite de faire rejouer l'animation du mort du personnage à chaque fois qu'il prend des dégats alors qu'il est déjà mort
         if(!characterMoter.isDead && currentHealth < maxHealth)
         {
@@ -298,6 +314,16 @@ public class PlayerInventory : MonoBehaviour
     void Update()
     {
 
+        // Pour le changement de couleur
+        if(skinTime <= 0)
+        {
+            skin.gameObject.GetComponent<Renderer>().material.color = skinOriginalColor;      
+        }
+        else
+        {
+            skinTime -= Time.deltaTime;
+        }
+
         // Pour la barre de vie
         float percentageHP = ((currentHealth * 100) / maxHealth) / 100;
         hpImage.fillAmount = percentageHP;
@@ -360,7 +386,7 @@ public class PlayerInventory : MonoBehaviour
     {
         if(characterMoter.isDead)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 80, 80, 40), "VOUS ÊTES MORT");
+            GUI.Label(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 80, 80, 40), "MORT");
             // Si on clique sur le bouton alors isPaused devient faux donc le jeu reprend
             if(GUI.Button(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 20, 80, 40), "Rejouer"))
             {
