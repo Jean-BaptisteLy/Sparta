@@ -2,7 +2,7 @@
 
 Projet fait sur Unity 2020.1.6f1
 
-Commandes :
+## Commandes :
 
 Déplacements : Z,Q,S,D
 Courir : Z + MAJ enfoncé
@@ -20,7 +20,7 @@ Inventaire (non opérationnel) : I
 Suicide (-10 points de vie) : L
 
 
-Consignes :
+## Consignes :
 
 • Un jeu avec un personnage.
 
@@ -30,8 +30,22 @@ Consignes :
 
 • Des étoiles bonus peuvent rendre l’utilisateur invincible aux ennemis pendant 10 secondes.
 
+• On doit pouvoir quitter le jeu à tout instant.
 
-• 5 niveaux :
+• On doit utiliser le clavier et la souris pour se déplacer, ainsi que pour tirer.
+
+• Les ennemis doivent changer de couleur quand on les touche. L’utilisateur aussi quand il gagne des étoiles ou de la vie.
+
+• Les portes changent de couleur quand on les active.
+
+• Si l’utilisateur gagne, on voit un "Félicitations". Le jeu se quitte.
+
+• On doit pouvoir Build le jeu.
+
+• Un Git doit être disponible.
+
+
+## • 5 niveaux :
 
 • Entrer dans une salle, pousser un bouton. Le bouton ouvre une porte. Entrer niveau 2.
 
@@ -42,19 +56,3 @@ Consignes :
 • L’environnement possède des trous. Si l’utilisateur tombe il perd de la vie. Arriver jusqu’au bouton. Pousser le bouton. Entrer le niveau 5.
 
 • L’utilisateur arrive devant des portes battantes. Il entre. Il n’y a pas de lumière mais un ajusteur de lumière rayonne. Il faut allumer la lumière. Quand la lumière est pleine, une gros ennemi avec une barre de vie se déplace. Il faut donc le toucher plusieurs fois. Si on le tue, on a gagné.
-
-• On doit pouvoir quitter le jeu à tout instant.
-
-• On doit utiliser le clavier et la souris pour se déplacer, ainsi que pour tirer.
-
-• Les ennemis doivent changer de couleur quand on les touche. L’utilisateur aussi quand il gagne des étoiles ou de la vie.
-
-• Les portes changent de couleur quand on les active.
-
-• Si l’utilisateur perd, on doit voir "Jouer encore ?", "Oui", "Non".
-
-• Si l’utilisateur gagne, on voit un "Félicitations". Le jeu se quitte.
-
-• On doit pouvoir Build le jeu.
-
-• Un Git doit être disponible.
