@@ -26,6 +26,13 @@ Inventaire (non opérationnel) : I
 Suicide (-10 points de vie) : L
 
 
+## Power-ups :
+
+• Lumière bleue : donne 10 points de vie.
+
+• Lumière verte : invincibilité pendant 10 secondes.
+
+
 ## Consignes :
 
 • Un jeu avec un personnage.
