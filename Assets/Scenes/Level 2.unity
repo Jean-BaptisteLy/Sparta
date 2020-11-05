@@ -479,6 +479,10 @@ PrefabInstance:
       propertyPath: inofensif
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1266882138977422989, guid: d1522d9081610b7498d1953cedd61873, type: 3}
+      propertyPath: inoffensif
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1522d9081610b7498d1953cedd61873, type: 3}
 --- !u!1 &705507993
@@ -1608,6 +1612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9dd60f27abd1a409dc18f82119dbcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneToLoad: {fileID: 0}
 --- !u!1001 &1614212544
 PrefabInstance:
   m_ObjectHideFlags: 0
