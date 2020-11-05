@@ -13,6 +13,8 @@ Attaque corps-à-corps : Clic gauche souris
 
 Attaque à distance : W
 
+Caméra de la vision : Déplacement de la souris
+
 Caméra autour du personnage : Clic droit souris enfoncé
 
 Inventaire (non opérationnel) : I
