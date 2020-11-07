@@ -33,6 +33,19 @@ Suicide (-10 points de vie) : L
 • Lumière verte : invincibilité pendant 10 secondes.
 
 
+## Description des niveaux :
+
+• Premier niveau : avancer vers la porte, pointer le curseur de la souris sur la poignée de la porte, clic gauche pour ouvrir, avancer. Quelques power-ups pour tester.
+
+• Deuxième niveau : pareil mais avec un ennemi inoffensif qui peut être battu.
+
+• Troisième niveau : un ennemi invincible + quelques power-ups. Avancer vers l'isoloir, fermer la porte pour bloquer l'ennemi. Avancer au fond de l'isoloir vers la lumière verte.
+
+• Quatrième niveau : Aucun ennemi, mais un jeu de plateformes avec des pics en-dessous. Avancer vers l'isoloir, l'ouvrir, avancer vers la lumière verte.
+
+• Cinquième et dernier niveau : Porte battante, avancer vers la pénombre, battre les 3 ennemis, et le boss (avec le sort touche W pour ce dernier).
+
+
 ## Consignes :
 
 • Un jeu avec un personnage.
